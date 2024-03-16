@@ -1,0 +1,51 @@
+.container{
+    width: 100%;
+    height: 330px;
+    background-color: #F5F5F5;
+    display: flex;
+    /* padding: 20px; */
+    justify-content: center;
+    align-items: center;
+   
+}
+.slider{
+    width: 70%;
+    height: 100%;
+    padding: 10px;
+}
+.slider img{
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    
+    /* overflow: hidden; */
+}
+.ads{
+    width: 30%;
+    height: 100%;
+   
+    display: flex;
+    flex-direction: column;
+}
+.top{
+
+width: 100%;
+height: 50%;
+}
+.top img{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
+.button{
+
+width: 100%;
+height: 50%;
+}
+.button img{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 20px;
+}
