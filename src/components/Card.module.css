@@ -30,7 +30,7 @@
     color: #e03232;
     flex: 1;
 }
-svg{
+.starContainer svg{
     color: gold;
 }
 .starContainer{
