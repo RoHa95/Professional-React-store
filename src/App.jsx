@@ -6,6 +6,9 @@ import BasketProducts from "./pages/BasketProducts";
 import Signing from "./pages/Signing";
 import PageNotFound from "./pages/PageNotFound";
 import ProductsProvider from "./context/ProductContext";
+import ContactUs from "./pages/ContactUs";
+import AboutUs from "./pages/AboutUs";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
       <Route path="/checkOut" element={<BasketProducts />} />
       <Route path="/signing" element={<Signing />} />
       <Route path="/*" element={<PageNotFound />} />
+      <Route path="/contact-us" element={<ContactUs/>}/>
+      <Route path="/about-us" element={<AboutUs/>}/>
+      <Route path="/search-page" element={<SearchPage/>}/>
     </Routes>
     </ProductsProvider>
   );

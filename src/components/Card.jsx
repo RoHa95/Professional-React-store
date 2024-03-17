@@ -21,11 +21,11 @@ function Card({ data }) {
       const empety = 5 - rate;
       // console.log(empety);
       for (let i = 0; i < rate; i++) {
-        console.log("0");
+       // console.log("0");
         resultFull.push(0);
       }
       for (let i = 0; i < empety; i++) {
-        console.log("1");
+       // console.log("1");
         resultHalf.push(0);
       }
     } else {
@@ -33,19 +33,18 @@ function Card({ data }) {
       const empety = 5 - rate;
 
       for (let i = 1; i < rate + 1; i++) {
-        console.log("0");
+      //  console.log("0");
         resultFull.push(0);
       }
       for (let i = 1; i < empety; i++) {
-        console.log("1");
+      //  console.log("1");
         resultHalf.push(0);
       }
     }
     return { resultFull, resultHalf };
   };
-  const starts = starRender(rate);
-  
-  console.log(starts.resultFull);
+  const stars = starRender(rate);
+
   return (
     <div className={styles.cardContainer}>
       <img className={styles.cardImage} src={image} />
@@ -53,8 +52,8 @@ function Card({ data }) {
       <p className={styles.cardPrice}>{price} $ </p>
       <div className={styles.starContainer}>
 
-     {starts.resultFull.map(s=><FaStar/>)}
-     {starts.resultHalf.map(s=><CiStar/>)}
+     {stars.resultFull.map(s=><FaStar/>)}
+     {stars.resultHalf.map(s=><CiStar/>)}
       </div>
     </div>
   );

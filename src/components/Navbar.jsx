@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./Navbar.module.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { TiShoppingCart } from "react-icons/ti";
 
@@ -10,8 +10,32 @@ import { useProducts } from "../context/ProductContext";
 function Navbar() {
   const product = useProducts();
   const productscategory = product.map((p) => p.category);
-  const category = [...new Set(productscategory)];
+  const categories = [...new Set(productscategory)];
+  const [search, setSearch] = useState("");
+ // const [category, setCategory] = useState("");
+  const [query, setQuery] = useState({});
 
+  let navigate = useNavigate();
+
+ useEffect (()=>{
+  navigate("/search-page", {state : {query}});
+ },[query])
+  const searchHandler = () => {
+    setQuery((query) => ({ ...query,search} ));
+    
+    // navigate("/search-page", {state : {query}});
+  };
+
+  const categoryHandler = (event) => {
+    const category = event.target.innerText.toLowerCase();
+
+    if (event.target.tagName !== "LI") return;
+    //setCategory(category=> category);
+    setQuery((query) => ({...query, category}));
+    
+    // navigate("/search-page", {state : {query}});
+  };
+console.log(query);
   return (
     <div className={styles.navContainer}>
       <div className={styles.topNavbar}>
@@ -25,8 +49,12 @@ function Navbar() {
             </Link>
           </div>
           <div className={styles.navSearchBox}>
-            <input placeholder="search" />
-            <button>
+            <input
+              placeholder="search"
+              value={search}
+              onChange={(e) => setSearch(search => e.target.value.toLowerCase().trim())}
+            />
+            <button onClick={searchHandler}>
               <IoSearch />
             </button>
           </div>
@@ -47,7 +75,6 @@ function Navbar() {
                 سبد خرید
               </p>
               <p
-                
                 style={{
                   paddingBottom: "8px",
                   backgroundColor: "#63adf1",
@@ -56,8 +83,8 @@ function Navbar() {
                   width: "23px",
                   height: "20px",
                   textAlign: "center",
-                  lineHeight:"20px",
-                  paddingRight:"1px"
+                  lineHeight: "20px",
+                  paddingRight: "1px",
                 }}
               >
                 5
@@ -67,17 +94,20 @@ function Navbar() {
         </div>
       </div>
       <div className={styles.bottonNavbar}>
-        <ul className={styles.navList}>
-          {category.map((p) => (
+        <ul className={styles.navList} onClick={categoryHandler}>
+          <li className={styles.navListItem}>
+            <Link to="/products">خانه</Link>
+          </li>
+          {categories.map((p) => (
             <li key={p.index} className={styles.navListItem}>
-              <a>{p}</a>
+              {p}
             </li>
           ))}
           <li className={styles.navListItem}>
-            <a>تماس با ما</a>
+            <Link to="/contact-us">تماس با ما</Link>
           </li>
           <li className={styles.navListItem}>
-            <a>درباره ی ما</a>
+            <Link to="/about-us">درباره ی ما</Link>
           </li>
         </ul>
       </div>

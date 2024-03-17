@@ -1,0 +1,34 @@
+/* .containerOrginal{
+    display:flex ;
+    flex-direction: column;
+    justify-content: center;
+
+} */
+.lastCProducts{
+    background-color: #f8f3f3;
+    padding: 10px;
+width: 100%;
+display: flex;
+flex-direction: column;
+
+}
+.titleContainer{
+padding-right: 20px;
+}
+.title{
+padding-bottom: 25px;
+font-size: 26px;
+color: #6d6b6b;
+font-weight: 500;
+}
+.container{
+display: flex;
+flex-wrap: wrap;
+width: 100%;
+justify-content: space-between;
+align-items: center;
+border: 1px solid #bbbaba;
+padding: 20px;
+background-color: #fff;
+row-gap: 40px;
+}
