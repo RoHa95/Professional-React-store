@@ -1,41 +1,44 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 
-import styles from "./Navbar.module.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { TiShoppingCart } from "react-icons/ti";
-
 import { useProducts } from "../context/ProductContext";
+
+import styles from "./Navbar.module.css";
 
 function Navbar() {
   const product = useProducts();
   const productscategory = product.map((p) => p.category);
   const categories = [...new Set(productscategory)];
   const [search, setSearch] = useState("");
- // const [category, setCategory] = useState("");
-  const [query, setQuery] = useState({});
+
+  let query = useRef({ search: "", category: "" });
+  let category = useRef("");
 
   let navigate = useNavigate();
 
- useEffect (()=>{
-  navigate("/search-page", {state : {query}});
- },[query])
   const searchHandler = () => {
-    setQuery((query) => ({ ...query,search} ));
-    
-    // navigate("/search-page", {state : {query}});
+    query.current = { search: search, category: category.current };
+    navigate("/search-page", { state: { query } });
   };
 
   const categoryHandler = (event) => {
-    const category = event.target.innerText.toLowerCase();
+    const category1 = event.target.innerText.toLowerCase();
 
     if (event.target.tagName !== "LI") return;
-    //setCategory(category=> category);
-    setQuery((query) => ({...query, category}));
-    
-    // navigate("/search-page", {state : {query}});
+    if (event.target.innerText === "خانه") return;
+    if (event.target.innerText === "همه ی محصولات") {
+      category.current = "";
+      query.current = { category: category.current, search: search };
+      navigate("/search-page", { state: { query } });
+    } else {
+      category.current = category1;
+      query.current = { category: category.current, search: search };
+      navigate("/search-page", { state: { query } });
+    }
   };
-console.log(query);
+
   return (
     <div className={styles.navContainer}>
       <div className={styles.topNavbar}>
@@ -52,7 +55,9 @@ console.log(query);
             <input
               placeholder="search"
               value={search}
-              onChange={(e) => setSearch(search => e.target.value.toLowerCase().trim())}
+              onChange={(e) =>
+                setSearch((search) => e.target.value.toLowerCase().trim())
+              }
             />
             <button onClick={searchHandler}>
               <IoSearch />
@@ -97,6 +102,9 @@ console.log(query);
         <ul className={styles.navList} onClick={categoryHandler}>
           <li className={styles.navListItem}>
             <Link to="/products">خانه</Link>
+          </li>
+          <li className={styles.navListItem} onClick={categoryHandler}>
+          همه ی محصولات
           </li>
           {categories.map((p) => (
             <li key={p.index} className={styles.navListItem}>
