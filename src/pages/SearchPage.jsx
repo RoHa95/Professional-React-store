@@ -6,7 +6,7 @@ import styles from "./SearchPage.module.css";
 import Loader from "../components/Loader";
 
 import { useProducts } from "../context/ProductContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useRef } from "react";
 function SearchPage() {
   const products = useProducts();
@@ -14,14 +14,17 @@ function SearchPage() {
   const [filter, setFilter] = useState({});
   const location = useLocation();
   const [show, setShow] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
   let notFound = useRef(false);
+
   const state = location.state.query.current;
-  console.log(state);
 
   useEffect(() => {
     setDisplayed((displayed) => products);
+    console.log(state);
   }, []);
   useEffect(() => {
+    // setSearchParams(newState);
     const result = searchProducts();
     const finalResult = categoryProducts(result);
     setDisplayed((displayed) => finalResult);
@@ -32,7 +35,6 @@ function SearchPage() {
     }
   }, [state]);
   const searchProducts = () => {
-    console.log(state);
     if (!state.search) return products;
     const result = products.filter((p) =>
       p.title.trim().toLowerCase().includes(state.search)

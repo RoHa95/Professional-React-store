@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { TiShoppingCart } from "react-icons/ti";
 import { useProducts } from "../context/ProductContext";
@@ -18,6 +18,7 @@ function Navbar() {
 
   let navigate = useNavigate();
 
+ 
   const searchHandler = () => {
     query.current = { search: search, category: category.current };
     navigate("/search-page", { state: { query } });
