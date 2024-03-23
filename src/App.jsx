@@ -9,22 +9,25 @@ import ProductsProvider from "./context/ProductContext";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import SearchPage from "./pages/SearchPage";
+import CardProvider from "./context/CardContext";
 
 function App() {
   return (
-    <ProductsProvider>
-    <Routes>
-      <Route path="/" element={<Navigate to="/products" replace />} />
-      <Route path="/products" element={<HomePage />} />
-      <Route path="/products/:id" element={<ProductDetails />} />
-      <Route path="/checkOut" element={<BasketProducts />} />
-      <Route path="/signing" element={<Signing />} />
-      <Route path="/*" element={<PageNotFound />} />
-      <Route path="/contact-us" element={<ContactUs/>}/>
-      <Route path="/about-us" element={<AboutUs/>}/>
-      <Route path="/search-page" element={<SearchPage/>}/>
-    </Routes>
-    </ProductsProvider>
+    <CardProvider>
+      <ProductsProvider>
+        <Routes>
+          <Route path="/" element={<Navigate to="/products" replace />} />
+          <Route path="/products" element={<HomePage />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/checkOut" element={<BasketProducts />} />
+          <Route path="/signing" element={<Signing />} />
+          <Route path="/*" element={<PageNotFound />} />
+          <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/search-page" element={<SearchPage />} />
+        </Routes>
+      </ProductsProvider>
+    </CardProvider>
   );
 }
 export default App;

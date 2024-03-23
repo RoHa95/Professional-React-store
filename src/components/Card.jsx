@@ -1,12 +1,14 @@
 import React from "react";
-import { shortTitle } from "../helper/helper";
+import { productQuantity, shortTitle } from "../helper/helper";
 
 import { CiStar } from "react-icons/ci";
 import { FaStar } from "react-icons/fa6";
+import { BiSolidCartAdd } from "react-icons/bi";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { MdDeleteOutline } from "react-icons/md";
 import styles from "./Card.module.css";
+import { useCard } from "../context/CardContext";
 
 function Card({ data }) {
   const { id, title, image, description, category, price, rating } = data;
@@ -44,22 +46,58 @@ function Card({ data }) {
     }
     return { resultFull, resultHalf };
   };
+
   const stars = starRender(rate);
 
+  const [state, dispatch] = useCard();
+
+  const quantity = productQuantity(state, id);
+  console.log(quantity);
+  console.log(state);
+  const clickHandler = (type) => {
+    dispatch({ type, payload: data });
+  };
   return (
-    <Link to={`/products/${id}`} className={styles.cardContainer}>
-      <img className={styles.cardImage} src={image} />
-      <h2 className={styles.cardTitle}>{newTitle}</h2>
-      <p className={styles.cardPrice}>{price} $ </p>
-      <div className={styles.starContainer}>
-        {stars.resultFull.map((s) => (
-          <FaStar />
-        ))}
-        {stars.resultHalf.map((s) => (
-          <CiStar />
-        ))}
+    <div className={styles.cardContainer}>
+      <Link className={styles.linkContainer} to={`/products/${id}`}>
+        <img className={styles.cardImage} src={image} />
+        <h2 className={styles.cardTitle}>{newTitle}</h2>
+        <p className={styles.cardPrice}>{price} $ </p>
+        <div className={styles.starContainer}>
+          {stars.resultFull.map((s) => (
+            <FaStar />
+          ))}
+          {stars.resultHalf.map((s) => (
+            <CiStar />
+          ))}
+        </div>
+      </Link>
+      <div className={styles.btnContainer}>
+      {quantity === 1 && (
+          <button onClick={() => clickHandler("REMOVE_ITEM")}>
+            <MdDeleteOutline />
+          </button>
+        )}
+         {quantity > 1 && (
+          <button onClick={() => clickHandler("DECREASE")}>-</button>
+        )}
+        {!!quantity && <span>{quantity}</span> }
+        
+        {quantity === 0 ? (
+          <div
+            onClick={() => clickHandler("ADD_ITEM")}
+            className={styles.addBtn}
+          >
+            افزودن به سبد خرید
+          </div>
+        ) : (
+          <button onClick={() => clickHandler("INCREASE")}>+</button>
+        )}
+       
+        
+       
       </div>
-    </Link>
+    </div>
   );
 }
 

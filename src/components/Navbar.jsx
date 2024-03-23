@@ -6,6 +6,7 @@ import { TiShoppingCart } from "react-icons/ti";
 import { useProducts } from "../context/ProductContext";
 
 import styles from "./Navbar.module.css";
+import { useCard } from "../context/CardContext";
 
 function Navbar() {
   const product = useProducts();
@@ -18,7 +19,8 @@ function Navbar() {
 
   let navigate = useNavigate();
 
- 
+ const [state, dispatch] = useCard();
+
   const searchHandler = () => {
     query.current = { search: search, category: category.current };
     navigate("/search-page", { state: { query } });
@@ -93,7 +95,7 @@ function Navbar() {
                   paddingRight: "1px",
                 }}
               >
-                5
+                {state.itemsCounter}
               </p>
             </Link>
           </div>

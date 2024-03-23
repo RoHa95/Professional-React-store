@@ -26,6 +26,7 @@ function ProposeProduct() {
           <Card data={propose}/>
         </div>
       </div>
+     
     
   );
 }
