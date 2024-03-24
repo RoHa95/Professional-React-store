@@ -1,0 +1,89 @@
+*{
+    direction: rtl;
+}
+.container{
+   
+    padding: 20px;
+    background-color: #F5F5F5;
+
+}
+.contentContainer{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+table{
+    width: 100%;
+}
+th{
+    height: 40px;
+    border-bottom: 1px solid #F5F5F5;
+}
+td{
+    border-bottom: 1px solid #F5F5F5;
+    height: 70px;
+   
+}
+.cartContentContainer{
+    border: 2px solid #F5F5F5;
+    margin: 30px 50px;
+    width: 100%;
+    overflow-x: scroll;
+}
+.cartContentContainer::-webkit-scrollbar{
+    display: hidden;
+}
+.cartContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    direction: ltr;
+    
+    
+}
+.summary{
+    width: 35%;
+    height: 500px;
+    direction: ltr;
+    margin-top: 35px;
+}
+.imageContainer{
+    width: 100px;
+    height: 100px;
+}
+.summaryTitle{
+font-size: 18px;
+color: #5e5b5b;
+padding-bottom: 20px;
+padding-right: 10px;
+
+}
+.summaryContent{
+padding: 10px;
+border: 2px solid #F5F5F5;
+margin-left: 50px;
+}
+.summaryContent p{
+    padding-bottom: 10px;
+}
+.checkedBtn{
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: #4485e6;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+.btn{
+    background-color: #F68B1F;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+}

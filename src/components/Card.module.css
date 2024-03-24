@@ -65,6 +65,11 @@
 .addBtn:hover{
     background-color: #ee7a078c;
 }
+.btnContainer{
+    width: 220px;
+    display: flex;
+    justify-content: center;
+}
 .btnContainer button{
     background-color: #F68B1F;
     color: #fff;
