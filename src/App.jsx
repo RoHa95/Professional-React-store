@@ -10,6 +10,7 @@ import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
 import SearchPage from "./pages/SearchPage";
 import CardProvider from "./context/CardContext";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/checkOut" element={<BasketProducts />} />
           <Route path="/signing" element={<Signing />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/*" element={<PageNotFound />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/about-us" element={<AboutUs />} />

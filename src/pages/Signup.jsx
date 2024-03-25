@@ -1,112 +1,94 @@
-import React from 'react'
+import React, { useState } from "react";
+
+import styles from "./Signup.module.css";
+import { Link } from "react-router-dom";
+
+import { sigingValidate } from "../helper/validate";
 
 function Signup() {
+  const [phone, setPhone] = useState("");
+  const [pass, setPass] = useState("");
+ 
+  const [errors, setErrors] = useState({phone:"",pass:""});
+
+
+  const phoneHandler = (e) => {
+    setPhone(e.target.value);
+  };
+  const passHandler = (e) => {
+    setPass(e.target.value);
+  };
+ 
+  const submitHandler = () => {
+    console.log({ phone, pass });
+    const result = sigingValidate({ phone, pass });
+    setErrors(errors=>result);
+    console.log(errors);
+
+  };
   return (
     <div className={styles.container}>
-    <img
-      style={{
-        width: "100px",
-        paddingBottom: "20px",
-        backgroundColor: "transparent",
-      }}
-      src="https://s30.picofile.com/file/8473547926/logo.PNG"
-      alt="logo"
-    />
-    <div className={styles.content}>
-      <table>
-        <tr>
-          <th>عضویت</th>
-        </tr>
-        <tr>
-          <td>
-            <div className={styles.formContainer}>
-              <p>شماره موبایل</p>
-              <input
-                className={styles.textInput}
-                type="number"
-                value={phone}
-                onChange={phoneHandler}
-              />
-              <span className={errors.phone && styles.errorContainer}>{errors.phone}</span>
-              <p>نام</p>
-              <input
-                className={styles.textInput}
-                type="text"
-                value={name}
-                onChange={nameHandler}
-              />
-              <span className={errors.name && styles.errorContainer}>{errors.name}</span>
-              <p>نام خانوادگی</p>
-              <input
-                className={styles.textInput}
-                type="text"
-                value={lastName}
-                onChange={lastNameHandler}
-              />
-              <span className={errors.lastName && styles.errorContainer}>{errors.lastName}</span>
-              <p>ایمیل</p>
-              <input
-                className={styles.textInput}
-                type="email"
-                value={email}
-                onChange={emailHandler}
-              />
-              <span className={errors.email && styles.errorContainer}>{errors.email}</span>
-             
-              <p>یک رمز به نشانی ایمیل شما فرستاده خواهد شد.</p>
-              <div
-                style={{ paddingTop: "10px" }}
-                className={styles.radioContainer}
-              >
+      <img
+        style={{
+          width: "100px",
+          paddingBottom: "20px",
+          backgroundColor: "transparent",
+        }}
+        src="https://s30.picofile.com/file/8473547926/logo.PNG"
+        alt="logo"
+      />
+      <div className={styles.content}>
+        <table>
+          <tr>
+            <th>عضویت</th>
+          </tr>
+          <tr>
+            <td>
+              <div className={styles.formContainer}>
+                <p>شماره موبایل</p>
                 <input
-                  type="radio"
-                  id="customer"
-                  name="role"
-                  value="customer"
-                  onChange={roleHandler}
-                  checked={role === "customer"}
+                  className={styles.textInput}
+                  type="number"
+                  value={phone}
+                  onChange={phoneHandler}
                 />
-                <label className={styles.labelRadio} htmlFor="customer">
-                  من یک خریدار هستم.
-                </label>
-              </div>
-              <div
-                style={{ marginBottom: "20px" }}
-                className={styles.radioContainer}
-              >
+                <span className={errors.phone && styles.errorContainer}>{errors.phone}</span>
+                <p>گذرواژه</p>
                 <input
-                  type="radio"
-                  id="seller"
-                  name="role"
-                  value="seller"
-                  onChange={roleHandler}
-                  checked={role === "seller"}
+                  className={styles.textInput}
+                  type="password"
+                  value={pass}
+                  onChange={passHandler}
                 />
-                <label className={styles.labelRadio} htmlFor="seller">
-                  من یک فروشنده هستم.
-                </label>
-              </div>
+                <span style={{marginBottom:"30px"}} className={errors.pass && styles.errorContainer}>{errors.pass}</span>
+                <div style={{display:"flex",marginBottom:"10px"}}>
 
-              <button onClick={submitHandler} className={styles.registerBtn}>
-                عضویت
-              </button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p className={styles.sinup}>
-              قبلا ثبتنام کرده اید؟
-              <Link className={styles.sinupLink} to="/products">
-                وارد شوید.
-              </Link>
-            </p>
-          </td>
-        </tr>
-      </table>
+                <input type="checkbox" name="remember"></input>
+                <label htmlFor="remember">مرا به خاطر بسپار</label>
+                </div>
+             
+               
+
+                <button onClick={submitHandler} className={styles.registerBtn}>
+                  عضویت
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p className={styles.sinup}>
+                هنوز ثبتنام نکرده اید؟
+                <Link className={styles.sinupLink} to="/signing">
+                  ثبتنام کنید.
+                </Link>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-  </div>
-  )
+  );
 }
 
-export default Signup
+export default Signup;

@@ -28,4 +28,19 @@ if (!regexEmail.test(email)) {
 }
 return errors; 
 }
-export {formValidate};
+const sigingValidate = ({ phone, pass }) => {
+  const errors = { phone: "", pass: "" };
+  if (phone.length === 0) {
+      errors.phone = "لطفا شماره همراه خو را وارد کنید.";
+    } else if (phone.length < 11) {
+      errors.phone = "لطفا شماره همراه خود را به درستی وارد کنید.";
+    }
+if (pass.length === 0) {
+  errors.pass = "لطفا گذرواژه خو را وارد کنید.";
+} else if (pass.length < 10) {
+  errors.pass = "لطفا گذرواژه خود را به درستی وارد کنید.";
+}
+return errors;
+};
+
+export {formValidate,sigingValidate};

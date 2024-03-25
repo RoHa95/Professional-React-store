@@ -132,7 +132,7 @@ function Signing() {
             <td>
               <p className={styles.sinup}>
                 قبلا ثبتنام کرده اید؟
-                <Link className={styles.sinupLink} to="/products">
+                <Link className={styles.sinupLink} to="/signup">
                   وارد شوید.
                 </Link>
               </p>
