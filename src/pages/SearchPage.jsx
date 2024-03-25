@@ -53,7 +53,7 @@ function SearchPage() {
       <Navbar />
       <div className={styles.lastCProducts}>
         <div className={styles.titleContainer}>
-          <h1 className={styles.title}>جدیدترین محصولات</h1>
+          <h1 className={styles.title}> محصولات فیلتر شده</h1>
         </div>
         <div className={styles.container}>
           {!displayed.length && show && <Loader />}
