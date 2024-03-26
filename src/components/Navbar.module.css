@@ -50,10 +50,13 @@ background-color: #f3f1f1;
     margin-left: 20px;
     padding-left: 10px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 .loginBtn p{
     font-size: 15px;
     color: #555;
+    padding-bottom: 5px;
 }
 .navBasketBtn{
     width: 150px;
@@ -111,4 +114,6 @@ background-color: #f3f1f1;
     font-size: small;
     color: #555;
     cursor: pointer;
+  
+
 }

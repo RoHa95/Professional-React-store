@@ -11,19 +11,19 @@ function Footer() {
     <footer className={styles.container}>
       <div className={styles.topContainer}>
         <ul>
-          <li>راهنمای خرید</li>
+          <li className={styles.ulTitle}>راهنمای خرید</li>
           <li>نحوه ثبت سفارش</li>
           <li>نحوه ارسال سفارش</li>
           <li>شیوه های پرداخت</li>
         </ul>
         <ul>
-          <li>خدمات مشتریان</li>
+          <li className={styles.ulTitle}>خدمات مشتریان</li>
           <li>پاسخ به پرسش های متداول</li>
           <li>شرایط استفاده </li>
           <li>حریم خصوصی </li>
         </ul>
         <ul>
-          <li>فروشگاه ما </li>
+          <li className={styles.ulTitle}>فروشگاه ما </li>
           <li> اتاق خبر </li>
           <li>فروشنده ما شو </li>
           <li>درباره ما </li>
