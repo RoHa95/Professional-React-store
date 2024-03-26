@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+.imageContainer{
+    width: 40%;
+    padding-bottom: 30px;
+}
+.notfoundTag{
+font-size: 30px;
+padding-top: 30px;
+}
