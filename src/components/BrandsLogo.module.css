@@ -1,28 +1,25 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: #fff;
-    margin: 60px 10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #fff;
+  margin: 60px 10px;
 }
-.container h1{
-    font-size: 20px;
-    color: #706d6d;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #bbb6b6;
-    margin: 0 20px;
+.container h1 {
+  font-size: 20px;
+  color: #706d6d;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #bbb6b6;
+  margin: 0 20px;
 }
 .brandContainer {
- 
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: nowrap;
   width: 100%;
- 
   padding: 30px 30px;
-  
 }
 .itemContainer img {
   width: 200px;

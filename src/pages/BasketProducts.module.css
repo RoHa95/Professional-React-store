@@ -16,6 +16,7 @@
 }
 table{
     width: 100%;
+    padding-right: 10px;
 }
 th{
     height: 40px;
@@ -31,6 +32,7 @@ td{
     margin: 30px 50px;
     width: 100%;
     overflow-x: scroll;
+   
 }
 .cartContentContainer::-webkit-scrollbar{
     display: hidden;
@@ -45,7 +47,7 @@ td{
 }
 .summary{
     width: 35%;
-    height: 500px;
+    height: 400px;
     direction: ltr;
     margin-top: 35px;
 }

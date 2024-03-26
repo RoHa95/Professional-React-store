@@ -7,6 +7,7 @@ import Banners from "../components/Banners";
 import LastProducts from "../components/LastProducts";
 import ProposeProduct from "../components/ProposeProduct";
 import BrandsLogo from "../components/BrandsLogo";
+import Footer from "../components/Footer";
 
 function HomePage() {
   const products = useProducts();
@@ -24,6 +25,7 @@ function HomePage() {
         </div>
       </div>
       <BrandsLogo/>
+      <Footer/>
     </>
   );
 }

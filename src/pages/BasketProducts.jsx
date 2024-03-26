@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./BasketProducts.module.css";
 import Navbar from "../components/Navbar";
 import { MdDeleteOutline } from "react-icons/md";
+import Footer from "../components/Footer";
 
 function BasketProducts() {
   const [state, dispatch] = useCard();
@@ -46,7 +47,7 @@ function BasketProducts() {
                     <p>{product.title}</p>
                   </td>
                   <td style={{ textAlign: "center", width: "120px" }}>
-                    {product.price}
+                    {product.price} $
                   </td>
                   <td style={{ textAlign: "center", width: "120px" }}>
                     {product.quantity === 1 && (
@@ -59,7 +60,7 @@ function BasketProducts() {
                     <button className={styles.btn} onClick={()=>{clickHandler("INCREASE", product)}}>+</button>
                   </td>
                   <td style={{ textAlign: "center", width: "120px" }}>
-                    {product.price * product.quantity}
+                    {product.price * product.quantity} $
                   </td>
                 </tr>
               ))}
@@ -90,6 +91,7 @@ function BasketProducts() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

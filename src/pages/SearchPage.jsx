@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import { useProducts } from "../context/ProductContext";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useRef } from "react";
+import Footer from "../components/Footer";
 function SearchPage() {
   const products = useProducts();
   const [displayed, setDisplayed] = useState([]);
@@ -64,6 +65,7 @@ function SearchPage() {
         </div>
         <p>lklklkl</p>
       </div>
+      <Footer/>
     </div>
   );
 }
