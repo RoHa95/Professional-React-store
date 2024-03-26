@@ -20,6 +20,9 @@ li:first-child{
    font-weight: 800;
    font-size: 22px;
 }
+li{
+    cursor: pointer;
+}
 .socialIconContainer{
     display: flex;
     justify-content: space-between;
